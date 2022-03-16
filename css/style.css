@@ -49,22 +49,28 @@ body{
     border-bottom: 1px solid #999;
 }
 
-.input-group label{
-    /* flex-basis: 33%; */
+.input-group p{
     color: #777;
+}
+.right{
+    display: flex;
+    align-items: center;
 }
 
 .input-group input{
-    margin-left: auto;
     margin-right: 5px;
     text-align: right;
-    /* flex-basis: 33%; */
     background: transparent;
     border: 0;
     outline: 0;
     padding: 10px 0;
     color: #333;
     font-size: 18px;
+}
+.input-group-item{
+    margin-left: auto;
+    display: flex;
+    align-items: center;
 }
 ::placeholder{
     font-size: 14px;
@@ -94,4 +100,27 @@ select{
 }
 #usageTime{
     width: 160px
+}
+
+@media screen and (max-width: 500px) {
+    .input-group{
+        flex-direction: column;
+        width: 100%;
+    }
+    .input-group, select {
+        font-size: 13px;
+    }
+    .input-group-item{
+        width: 100%;
+    }
+    .input-group-item input{
+        width: 50%;
+        text-align: left;
+    }
+    .right{
+        margin-left: auto;
+    }
+    #powerConsum, #usageTime{
+        width: 45%;
+    }
 }

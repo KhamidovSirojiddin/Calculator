@@ -1,79 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Electricity Cost Calculator</title>
+    <link rel="icon" href="img/favicon1.png" type="image/x-icon" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script
+      src="https://kit.fontawesome.com/c4254e24a8.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Electricity Cost Calculator</title>
-  <link rel="icon" href="img/favicon1.png" type="image/x-icon">
-  <link rel="stylesheet" href="css/style.css" />
-  <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
-</head>
+  <body>
+    <div class="container">
+      <form>
+        <i class="fas fa-calculator"></i>
 
-<body>
-  <div class="container">
-    <form>
-      <i class="fas fa-calculator"></i>
+        <h3 style="text-align: center; color: #3f3f3f">
+          Electricity Cost Calculator
+        </h3>
+        <div class="input-group">
+          <label>Power Consumption</label>
+          <div class="input-group-item">
+            <input
+              onkeyup="powerConsumed()"
+              id="powerCons"
+              type="number"
+              placeholder="..."
+            />
+            <div class="right">
+              <select onchange="powerConsumption()" id="powerSelect">
+                <option value="watts">W</option>
+                <option value="kilowatts" selected>kW</option>
+              </select>
+            </div>
+          </div>
+        </div>
 
-      <h3 style="text-align: center; color: #3f3f3f;">Electricity Cost Calculator</h3>
-      <div class="input-group">
-        <label>Power Consumption</label>
-        <input onkeyup="powerConsumed()" id="powerCons" type="number" placeholder="..." />
-        <select onchange="powerConsumption()" id="powerSelect">
-          <option value="watts">W</option>
-          <option value="kilowatts" selected>kW</option>
-        </select>
+        <div class="input-group">
+          <label>Energy Price</label>
+          <div class="input-group-item">
+              <input
+                onkeyup="powerConsumed()"
+                id="energyPrice"
+                type="number"
+                placeholder="..."
+              />
+              <div class="right" style="color: #777; cursor: pointer">
+                € / kWh
+              </div>
+          </div>
+        </div>
 
-      </div>
+        <div class="input-group">
+          <label>Usage time</label>
 
-      <div class="input-group">
-        <label>Energy Price</label>
-        <input onkeyup="powerConsumed()" id="energyPrice" type="number" placeholder="..." />
-        <div style="margin-left: 5px; color: #777; cursor: pointer;"> € / kWh</div>
-      </div>
+          <div class="input-group-item">
+            <input
+              id="usageTime"
+              onkeyup="powerConsumed()"
+              type="number"
+              placeholder="..."
+            />
+            <div class="right">
+              <div style="color: #777; cursor: pointer">
+                hours /
+              </div>
+              <select onchange="changeUsageTime()" name="" id="usageSelect">
+                <option value="costday" selected>per day</option>
+                <option value="costweek">per week</option>
+                <option value="costmonth">per month</option>
+                <option value="costyear">per year</option>
+              </select>
+            </div>
+          </div>
+        </div>
 
-      <div class="input-group">
-        <label>Usage time</label>
-        <input id="usageTime" onkeyup="powerConsumed()" type="number" placeholder="..." />
-        <div style="margin-left: 5px; color: #777; cursor: pointer;">hours /</div>
-        <select onchange="changeUsageTime()" name="" id="usageSelect">
-          <option value="costday" selected>per day</option>
-          <option value="costweek">per week</option>
-          <option value="costmonth">per month</option>
-          <option value="costyear">per year</option>
-        </select>
-      </div>
+        <div class="input-group">
+          <label>Power consumed</label>
+          <div class="input-group-item">
+            <input id="powerConsum" type="number" placeholder="..." disabled />
+            <div class="right">
+              <div style="color: #777; cursor: pointer">
+                kWh /
+              </div>
+              <select onchange="changeConsumed()" name="" id="consumedSelect">
+                <option value="costday" selected>per day</option>
+                <option value="costweek">per week</option>
+                <option value="costmonth">per month</option>
+                <option value="costyear">per year</option>
+              </select>
+            </div>
+          </div>
+        </div>
 
-      <div class="input-group">
-        <label>Power consumed</label>
-        <input id="powerConsum" type="number" placeholder="..." disabled />
-        <div style="margin-left: 5px; color: #777; cursor: pointer;">kWh /</div>
-        <select onchange="changeConsumed()" name="" id="consumedSelect">
-          <option value="costday" selected>per day</option>
-          <option value="costweek">per week</option>
-          <option value="costmonth">per month</option>
-          <option value="costyear">per year</option>
-        </select>
-      </div>
+        <div class="input-group">
+          <label>Cost</label>
+          <div class="input-group-item">
+            <input id="cost" type="number" placeholder="..." disabled />
+            <div class="right">
+              <div style="color: #777; cursor: pointer">
+                € /
+              </div>
+              <select onchange="changeCost()" name="" id="costSelect">
+                <option value="costday" selected>per day</option>
+                <option value="costweek">per week</option>
+                <option value="costmonth">per month</option>
+                <option value="costyear">per year</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
 
-      <div class="input-group">
-        <label>Cost</label>
-        <input id="cost" type="number" placeholder="..." disabled />
-        <div style="margin-left: 5px; color: #777; cursor: pointer;">€ /</div>
-        <select onchange="changeCost()" name="" id="costSelect">
-          <option value="costday" selected>per day</option>
-          <option value="costweek">per week</option>
-          <option value="costmonth">per month</option>
-          <option value="costyear">per year</option>
-        </select>
-      </div>
-
-
-
-
-    </form>
-  </div>
-
-  <script src="js/main.js"></script>
-</body>
-
+    <script src="js/main.js"></script>
+  </body>
 </html>
